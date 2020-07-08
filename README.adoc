@@ -12,7 +12,7 @@ route("GET /helloworld") do req
     """
 end
 
-server = run("/tmp/test.sock", routemiddleware)
+server = run("/tmp/test.sock")
 wait(Condition())
 close(server)
 ````

@@ -36,7 +36,7 @@ julia> pkg"add https://github.com/BenLauwens/HTTPPipeServer.jl.git"
 
 Nginx configuration:
 
-```json
+```
 http {
     upstream test {
         server unix:/tmp/test.sock fail_timeout=0;

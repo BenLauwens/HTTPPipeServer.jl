@@ -1,7 +1,7 @@
 struct Request
     methodpath::String
     headers::Dict{String,String}
-    params::Dict{Symbol,String}
+    params::Dict{Symbol,Any}
     files::Dict{String,Vector{UInt8}}
 end
 
@@ -15,7 +15,7 @@ function Request(io::T) where T <: IO
         name, value = split(header, ": ")
         headers[name] = value
     end
-    params = Dict{Symbol,String}()
+    params = Dict{Symbol,Any}()
     files = Dict{String,Vector{UInt8}}()
     path, data = occursin("?", target) ? split(target, "?") : (target, nothing)
     methodpath = join((method, path), " ")
@@ -70,11 +70,11 @@ function Base.getindex(req::Request, key::Symbol)
     req.params[key]
 end
 
-function Base.setindex!(req::Request, value::String, key::Symbol)
+function Base.setindex!(req::Request, value::Any, key::Symbol)
     req.params[key] = value
 end
 
-function Base.get(req::Request, key::Symbol, value::String)
+function Base.get(req::Request, key::Symbol, value::Any)
     get(req.params, key, value)
 end
 

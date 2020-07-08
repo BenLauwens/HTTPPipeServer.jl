@@ -1,6 +1,6 @@
 = HTTPPipeServer
 
-A pure Julia HTTP gateway. Communication with a frontend webserver (eg. Nginx) goes through a named pipe of a Unix domain socket.
+A pure Julia HTTP gateway. Communication with a frontend webserver (eg. Nginx) goes through a named pipe or a Unix domain socket.
 
 ```julia
 route("GET /helloworld") do req
@@ -13,7 +13,7 @@ route("GET /helloworld") do req
 end
 
 server = run("/tmp/test.sock")
-wait(Condition())
+...
 close(server)
 ```
 

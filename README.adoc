@@ -15,7 +15,7 @@ end
 server = run("/tmp/test.sock")
 wait(Condition())
 close(server)
-````
+```
 
 == Build Status & Coverage
 
